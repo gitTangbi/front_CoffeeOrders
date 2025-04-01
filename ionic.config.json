@@ -1,0 +1,7 @@
+{
+  "name": "front_CoffeeOrders",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
