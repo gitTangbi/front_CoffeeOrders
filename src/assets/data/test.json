@@ -1,0 +1,6 @@
+[
+    { "id": "A1", "temperature": "Hot", "milk": "2%", "sweetness": "100%", "brew": "Latte", "size": "Medium", "selected": false },
+    { "id": "A2", "temperature": "Iced", "milk": "Lactose-Free", "sweetness": "50%", "brew": "Mocha", "size": "Large", "selected": false },
+    { "id": "A3", "temperature": "Warm", "milk": "2%", "sweetness": "0%", "brew": "Regular", "size": "Small", "selected": false }
+]
+  
