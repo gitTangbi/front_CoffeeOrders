@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Order Tab
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,78 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Order Tab</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Check tab1.page.scss for the styles, I used a class for ion-radio to manipulate it better -->
+  <form>
+    <ion-item>
+      <ion-label>Temperature</ion-label>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="temp" name="temp">
+      <ion-radio value="Hot" class="radiobutton">Hot</ion-radio>
+      <ion-radio value="Warm" class="radiobutton">Warm</ion-radio>
+      <ion-radio value="Iced" class="radiobutton">Iced</ion-radio>
+    </ion-radio-group>
+    <ion-item>
+      <ion-label>Milk</ion-label>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="milk" name="milk">
+      <ion-radio value="2" class="radiobutton">2%</ion-radio>
+      <ion-radio value="LactoseFree" class="radiobutton">Lactose-Free</ion-radio>
+    </ion-radio-group>
+    <ion-item>
+      <ion-label>Sweetness</ion-label>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="sweetness" name="sweetness">
+      <ion-radio value="0" class="radiobutton">0%</ion-radio>
+      <ion-radio value="50" class="radiobutton">50%</ion-radio>
+      <ion-radio value="100" class="radiobutton">100%</ion-radio>
+    </ion-radio-group>
+    <ion-item>
+      <ion-label>Brew</ion-label>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="brew" name="brew">
+      <ion-radio value="Regular" class="radiobutton">Regular</ion-radio>
+      <ion-radio value="French" class="radiobutton">French</ion-radio>
+      <ion-radio value="Latte" class="radiobutton">Latte</ion-radio>
+      <ion-radio value="Mocha" class="radiobutton">Mocha</ion-radio>
+    </ion-radio-group>
+    <ion-item>
+      <ion-label>Size</ion-label>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="size" name="size">
+      <ion-radio value="Small" class="radiobutton">Small</ion-radio>
+      <ion-radio value="Medium" class="radiobutton">Medium</ion-radio>
+      <ion-radio value="Large" class="radiobutton">Large</ion-radio>
+    </ion-radio-group>
+    <br>
+    <ion-button type="submit" (click)="insert()">Add Order</ion-button>
+  </form>
+
+  <ion-card>
+    <table>
+      <tr>
+        <td>Temperature:</td>
+        <td>{{temp}}</td>
+      </tr>
+      <tr>
+        <td>Milk:</td>
+        <td>{{milk}}</td>
+      </tr>
+      <tr>
+        <td>Sweetness:</td>
+        <td>{{sweetness}}</td>
+      </tr>
+      <tr>
+        <td>Brew:</td>
+        <td>{{brew}}</td>
+      </tr>
+      <tr>
+        <td>Size:</td>
+        <td>{{size}}</td>
+      </tr>
+    </table>
+  </ion-card>
 </ion-content>
