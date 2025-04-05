@@ -18,7 +18,7 @@ export class UpdatePagePage implements OnInit {
 
   ngOnInit() {
     this.orderId = this.activedRoute.snapshot.paramMap.get('id') || '';
-    this.getOrderDetails(this.orderId);
+    //this.getOrderDetails(this.orderId);
 
     this.updateForm = new FormGroup({
       temp: new FormControl(null, Validators.required),
@@ -49,25 +49,25 @@ export class UpdatePagePage implements OnInit {
     }
   }
 
-  getOrderDetails(orderId: number) {
-    this.orderServ.getOrder(orderId.toString()).subscribe(
-      (order) => {
-        this.order = order;
-        if (this.order) {
-          this.updateForm.patchValue({
-            temp: this.order.temperature,
-            milk: this.order.milk,
-            sweetness: this.order.sweetness,
-            brew: this.order.brew,
-            size: this.order.size,
-          });
-        }
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
+  // getOrderDetails(orderId: number) {
+  //   this.orderServ.getOrder(orderId.toString()).subscribe(
+  //     (order) => {
+  //       this.order = order;
+  //       if (this.order) {
+  //         this.updateForm.patchValue({
+  //           temp: this.order.temperature,
+  //           milk: this.order.milk,
+  //           sweetness: this.order.sweetness,
+  //           brew: this.order.brew,
+  //           size: this.order.size,
+  //         });
+  //       }
+  //     },
+  //     (error) => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
 
   submit() {
     console.log(this.updateForm.value);
