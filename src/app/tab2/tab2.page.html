@@ -13,22 +13,104 @@
     </ion-toolbar>
   </ion-header>
   
+  
   <ion-list>
+
     <ion-item *ngFor="let order of orders" (click)="selectOrder(order)">
-      <ion-label>
-        <h2>Order #{{ order.id }}</h2>
-        <p>Temperature: {{ order.temperature }}</p>
-        <p>Milk: {{ order.milk }}</p>
-        <p>Sweetness: {{ order.sweetness }}</p>
-        <p>Brew: {{ order.brew }}</p>
-        <p>Size: {{ order.size }}</p>
-      </ion-label>
-      <ion-checkbox slot="end" [(ngModel)]="order.selected"></ion-checkbox>
+        <ion-label>
+          <h2>Order #{{ order.id }}</h2>
+          <p>Temperature: {{ order.temp }}</p>
+          <p>Milk: {{ order.milk }}</p>
+          <p>Sweetness: {{ order.sweetness }}</p>
+          <p>Brew: {{ order.brew }}</p>
+          <p>Size: {{ order.size }}</p>
+        </ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="order.selected"></ion-checkbox>
     </ion-item>
 
+
     <div class="orderListBtn">
-      <ion-button (click)="deleteOrder()">Delete</ion-button>
-      <ion-button (click)="updateOrder()">Update</ion-button>
-    </div>
+      <ion-button type="button" (click)="deleteOrder()">Delete</ion-button>
+      <ion-button type="button" (click)="updateOrder()"   >Update</ion-button>
+      <!-- <ion-button type="button" (click)="retrieve()">Retrieve Order</ion-button>
+   -->
+
+   <ion-button type="button" (click)="retrieve()">Retrieve Orders</ion-button>
+  
+   </div>
   </ion-list>
+
+
+ 
+
+
 </ion-content>
+
+
+//*******************************//
+
+<!-- <table *ngFor="let i of orders">
+  <tr>
+    <td>Temperature:</td>
+    <td>{{i.temp}}</td>
+  </tr>
+  <tr>
+    <td>Milk:</td>
+    <td>{{i.milk}}</td>
+  </tr>
+  <tr>
+    <td>Sweetness:</td>
+    <td>{{i.sweetness}}</td>
+  </tr>
+  <tr>
+    <td>Brew:</td>
+    <td>{{i.brew}}</td>
+  </tr>
+  <tr>
+    <td>Size:</td>
+    <td>{{i.size}}</td>
+  </tr>
+</table> -->
+
+
+
+<!-- <ion-card>
+  <table *ngFor="let i of orders">
+    <tr>
+      <td>Temperature:</td>
+      <td>{{i.temp}}</td>
+    </tr>
+    <tr>
+      <td>Milk:</td>
+      <td>{{i.milk}}</td>{{i._id}} and {{i.temp}}
+    </tr>
+    <tr>
+      <td>Sweetness:</td>
+      <td>{{i.sweetness}}</td>{{i.sweetness}} and{{i.milk}}
+    </tr>
+    <tr>
+      <td>Brew:</td>
+      <td>{{i.brew}}</td>
+    </tr>
+    <tr>
+      <td>Size:</td>
+      <td>{{i.size}}</td>
+    </tr>
+  </table>
+</ion-card> -->
+
+
+<!-- <ion-card>
+<ion-item *ngFor="let order of orders" (click)="selectOrder(order)">
+  <ion-label>
+    <h2>Order #{{ order.id }}</h2>
+    <p>Temperature: {{ order.temp }}</p>
+    <p>Milk: {{ order.milk }}</p>
+    <p>Sweetness: {{ order.sweetness }}</p>
+    <p>Brew: {{ order.brew }}</p>
+    <p>Size: {{ order.size }}</p>
+  </ion-label>
+  <ion-checkbox slot="end" [(ngModel)]="order.selected"></ion-checkbox>
+</ion-item>
+
+</ion-card> -->
