@@ -70,6 +70,23 @@ export class UpdatePagePage implements OnInit {
   }
 
   submit() {
-    console.log(this.updateForm.value);
+    const orderID = this.orderId;
+    const updatedOrder = {
+      temperature: this.updateForm.value.temp,
+      milk: this.updateForm.value.milk,
+      sweetness: this.updateForm.value.sweetness,
+      brew: this.updateForm.value.brew,
+      size: this.updateForm.value.size,
+    };
+    
+    /* this.orderServ.update(orderID, updatedOrder).subscribe({
+      next: (data: any) => {
+        console.log(data);
+      },
+      error: () => {
+        console.error('Error updating order');
+      },
+      complete: () => console.info('Complete'),
+    }); */
   }
 }
