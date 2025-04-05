@@ -55,32 +55,45 @@
       <ion-radio value="Medium" class="radiobutton">Medium</ion-radio>
       <ion-radio value="Large" class="radiobutton">Large</ion-radio>
     </ion-radio-group>
+    <ion-label>ID: </ion-label>
+    <ion-input [(ngModel)]="id" name="id"></ion-input>
     <br>
-    <ion-button type="submit" (click)="insert()">Add Order</ion-button>
+    <ion-button type="button" (click)="insert()">Add Order</ion-button>
+  
+    <ion-button type="button" (click)="nextOrder()">Next Order</ion-button>
+  
+    <!-- <ion-button type="button" (click)="retrieveOne()">Retrieve Order</ion-button>
+   -->
   </form>
 
+{{outMsg}}
+
+
+<!--Below, I am not able to show the orders inside td but possible outside it-->
+
   <ion-card>
-    <table>
+    <table *ngFor="let i of orders">
       <tr>
         <td>Temperature:</td>
-        <td>{{temp}}</td>
+        <td>{{i.temp}}</td>
       </tr>
       <tr>
         <td>Milk:</td>
-        <td>{{milk}}</td>
+        <td>{{i.milk}}</td>{{i.id}} and {{i.temp}}
       </tr>
       <tr>
         <td>Sweetness:</td>
-        <td>{{sweetness}}</td>
+        <td>{{i.sweetness}}</td>{{i.sweetness}} and{{i.milk}}
       </tr>
       <tr>
         <td>Brew:</td>
-        <td>{{brew}}</td>
+        <td>{{i.brew}}</td>
       </tr>
       <tr>
         <td>Size:</td>
-        <td>{{size}}</td>
+        <td>{{i.size}}</td>
       </tr>
     </table>
   </ion-card>
 </ion-content>
+
