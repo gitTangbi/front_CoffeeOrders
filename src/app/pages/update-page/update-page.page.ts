@@ -18,6 +18,7 @@ export class UpdatePagePage implements OnInit {
 
   ngOnInit() {
     this.orderId = this.activedRoute.snapshot.paramMap.get('id') || '';
+    console.log(this.orderId);
     this.getOrderDetails(this.orderId);
 
     this.updateForm = new FormGroup({
@@ -40,7 +41,7 @@ export class UpdatePagePage implements OnInit {
         ...this.order, // an object store the existing properties of the order
 
         // update and override the new properties from the form that the user has choosen
-        temperature: this.updateForm.value.temp,
+        temp: this.updateForm.value.temp,
         milk: this.updateForm.value.milk,
         sweetness: this.updateForm.value.sweetness,
         brew: this.updateForm.value.brew,
@@ -49,44 +50,42 @@ export class UpdatePagePage implements OnInit {
     }
   }
 
-  getOrderDetails(orderId: number) {
-    this.orderServ.getOrder(orderId.toString()).subscribe(
-      (order) => {
-        this.order = order;
-        if (this.order) {
-          this.updateForm.patchValue({
-            temp: this.order.temperature,
-            milk: this.order.milk,
-            sweetness: this.order.sweetness,
-            brew: this.order.brew,
-            size: this.order.size,
-          });
-        }
+  getOrderDetails(orderId: String) {
+    const params = {_id: this.orderId};
+    this.orderServ.getOrder(params).subscribe({
+      next: (params: any) => {
+        this.order = params;
+        console.log(this.order);
       },
-      (error) => {
-        console.error(error);
+      error: (e) => {
+        console.error('Data somehow failed to load!');
+      },
+      complete: () => {
+        console.info('Data loaded succcessfully!');
       }
-    );
+    });
   }
 
   submit() {
     const orderID = this.orderId;
     const updatedOrder = {
-      temperature: this.updateForm.value.temp,
+      _id: this.orderId,
+      temp: this.updateForm.value.temp,
       milk: this.updateForm.value.milk,
       sweetness: this.updateForm.value.sweetness,
       brew: this.updateForm.value.brew,
       size: this.updateForm.value.size,
     };
     
-    /* this.orderServ.update(orderID, updatedOrder).subscribe({
-      next: (data: any) => {
-        console.log(data);
+     this.orderServ.update(updatedOrder).subscribe({
+      next: (params: any) => {
+        console.log(updatedOrder);
+        console.log(params);
       },
       error: () => {
         console.error('Error updating order');
       },
       complete: () => console.info('Complete'),
-    }); */
+    });
   }
 }

@@ -36,16 +36,17 @@ export class Tab1Page {
       size: this.size
     }
     
-    // this.service.insert(data)({
-    //   next:(data:any) =>{
-    //     console.log(data);
-    //     this.responseMsg = data.message;
-    //   },
-    //   error:(e) =>{
-    //     console.error(e);
-    //     this.responseMsg = e.message;
-    //   },
-    //   complete: () => console.info('Successfully added!');
-    // })
+    this.service.insert(data).subscribe({
+      next:(data:any) =>{
+        console.log(data);
+        this.responseMsg = data.message;
+      },
+      error:(e) =>{
+        console.error(e);
+        this.responseMsg = e.message;
+      },
+      complete: () => console.info('Successfully added!')
+    })
+
   }
 }
